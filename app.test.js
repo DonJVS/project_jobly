@@ -16,6 +16,6 @@ test("not found for site 404 (test stack print)", async function () {
   delete process.env.NODE_ENV;
 });
 
-afterAll(function () {
-  db.end();
+afterAll(async () => {
+  await db.end(); // Close the PostgreSQL connection after all tests
 });

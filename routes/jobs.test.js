@@ -84,19 +84,19 @@ describe("GET /jobs", function () {
     expect(resp.body).toEqual({
       jobs: [
         {
-          id: expect.any(Number),
+          id: expect.any(Number),  
           title: "Job1",
           salary: 50000,
           equity: "0.01",
           companyHandle: "c1",
         },
         {
-          id: expect.any(Number),
+          id: expect.any(Number), 
           title: "Job2",
           salary: 60000,
-          equity: "0.02",
-          companyHandle: "c2",
-        },
+          equity: "0.05",  
+          companyHandle: "c2", 
+        }
       ],
     });
   });
@@ -109,7 +109,7 @@ describe("GET /jobs", function () {
           id: expect.any(Number),
           title: "Job2",
           salary: 60000,
-          equity: "0.02",
+          equity: "0.05",
           companyHandle: "c2",
         },
       ],
@@ -131,7 +131,7 @@ describe("GET /jobs", function () {
           id: expect.any(Number),
           title: "Job2",
           salary: 60000,
-          equity: "0.02",
+          equity: "0.05",
           companyHandle: "c2",
         },
       ],

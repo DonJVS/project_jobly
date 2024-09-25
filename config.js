@@ -16,9 +16,10 @@ function getDatabaseUri() {
   const dbHost = process.env.DATABASE_HOST;
   const dbPort = process.env.DATABASE_PORT;
   const dbName = process.env.DATABASE_NAME;
+  const testDbName = process.env.TEST_DATABASE_NAME;
 
   return process.env.NODE_ENV === "test"
-    ? "postgresql:///jobly_test"
+    ? `postgresql://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${testDbName}`
     : `postgresql://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}`;
 }
 

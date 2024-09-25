@@ -47,20 +47,16 @@ function ensureLoggedIn(req, res, next) {
  */
 
 function ensureAdmin(req, res, next) {
-  try {
-    if (!res.locals.user || !res.locals.user.is_admin) {
-      throw new UnauthorizedError("Admin privileges required");
-    }
-    return next();
-  } catch (err) {
-    return next(err);
+  if (!res.locals.user || !res.locals.user.isAdmin) {
+    return next(new UnauthorizedError("Admin privileges required"));
   }
+  return next();
 }
 
 function ensureCorrectUserOrAdmin(req, res, next) {
   try {
     const user = res.locals.user;
-    if (!(user && (user.is_admin || user.username === req.params.username))) {
+    if (!(user && (user.isAdmin || user.username === req.params.username))) {
       throw new UnauthorizedError();
     }
     return next();

@@ -52,6 +52,10 @@ router.post("/", ensureAdmin, async function (req, res, next) {
 router.get("/", async function (req, res, next) {
   try {
     const { title, minSalary, hasEquity } = req.query;
+    //validates that minSalary is a number. 
+    if (minSalary && isNaN(parseInt(minSalary))){
+      throw new BadRequestError("Invalid minSalary: must be a number.");
+    }
     const jobs = await Job.findAll({
       title,
       minSalary: minSalary ? parseInt(minSalary) : undefined,
